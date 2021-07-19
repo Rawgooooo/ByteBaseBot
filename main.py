@@ -4,7 +4,6 @@ import discord
 from discord.ext import commands
 import os
 import praw
-from discord_slash import SlashCommand
 from discord.ext.commands import CommandNotFound
 
 
@@ -22,7 +21,7 @@ def get_prefix(client, message):
 
 
 client = commands.Bot(command_prefix=get_prefix, intents=intents)
-slash = SlashCommand(client, sync_commands=True)
+
 
 # _______________________________________________
 # Events
