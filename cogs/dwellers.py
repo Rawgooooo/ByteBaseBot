@@ -1,5 +1,4 @@
 import discord
-import googletrans
 from discord.ext import commands
 from main import get_quote
 import random
@@ -374,15 +373,6 @@ class dwellers(commands.Cog):
     @commands.command()
     async def translate(self, ctx, lang, *msg):
         await ctx.send(" :red_circle: Google Translator has gone haywire for now, so..... try again later!!!")
-
-        ''' lang = lang.lower()
-        if lang not in googletrans.LANGUAGES and lang not in googletrans.LANGCODES:
-            raise commands.BadArgument("Invalid Language to translate to")
-
-        text = " ".join(msg)
-        translator = googletrans.Translator()
-        text_translated = translator.translate(text, dest=lang).text
-        await ctx.send(text_translated) '''
 
     # ___________________________
     # giphy
