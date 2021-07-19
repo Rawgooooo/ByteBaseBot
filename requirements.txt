@@ -36,3 +36,4 @@ update-checker==0.18.0
 urllib3==1.26.3
 websocket-client==0.57.0
 yarl==1.5.1
+giphy_client==1.0.0
