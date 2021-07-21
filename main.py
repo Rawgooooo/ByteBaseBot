@@ -32,7 +32,7 @@ async def on_message(msg):
     if msg.author.discriminator == "4870":
         await msg.add_reaction("🇰")
 
-# bot prefix
+# on join
 @client.event
 async def on_guild_join(guild):
     with open("prefix.json", "r") as f:
@@ -42,6 +42,13 @@ async def on_guild_join(guild):
 
     with open("prefix.json", "w") as f:
         json.dump(prefixes, f, indent=3)
+
+    print(f"Joined A guild.\n name: {guild.name}\n id : {guild.id}")
+
+# on  leave
+@client.event()
+async def on_guild_leave(guild):
+    print(f"Left A guild.\n name: {guild.name}\n id : {guild.id}")
 
 
 # ____________________________
