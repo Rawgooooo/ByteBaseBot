@@ -45,7 +45,7 @@ async def on_guild_join(guild):
     print(f"Joined A guild.\n name: {guild.name}\n id : {guild.id}")
 
 # on  leave
-@client.event()
+@client.event
 async def on_guild_leave(guild):
     print(f"Left A guild.\n name: {guild.name}\n id : {guild.id}")
 
