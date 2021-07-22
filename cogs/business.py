@@ -3,6 +3,7 @@ from discord.ext import commands
 import random
 import json
 import os
+from yahoo_fin import stock_info as si
 
 # ____________________________
 # economy funcs
@@ -442,7 +443,16 @@ class business(commands.Cog):
         await ctx.send(embed=em)
 
     # _____________________________________
+    # _____________________________________
+    # crypto currency
+    @commands.command(aliases=["cc", "CC", "crypto"])
+    async def cryptocurrency(self, ctx):
+        cc = si.get_top_crypto()
+        em = discord.Embed(title="Crypto Currency", description="get prices of crypto currencies")
+        em.add_field(name="Details", value=cc)
+        await ctx.send(embed=em)
 
+    # _____________________________________
     # _____________________________________
     # yt API
     '''
