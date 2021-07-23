@@ -22,7 +22,7 @@ class On_Ready(commands.Cog):
             print("Number of Servers :", num_servers)
 
         status_type = [discord.ActivityType.watching, discord.ActivityType.listening]
-        status = [f"{num_servers} Important GUILDS", "560 users"]
+        status = [f"{num_servers} Important GUILDS", "711 users"]
         await self.client.change_presence(
             activity=discord.Activity(type=random.choice(status_type), name=random.choice(status)))
 
