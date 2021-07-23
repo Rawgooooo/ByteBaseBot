@@ -168,6 +168,7 @@ class MOD_commands(commands.Cog):
     # _____________________________________
     # warn
     @commands.command()
+    @has_permissions(administrator=True)
     async def warn(self, ctx, user: discord.Member, *, msg=None):
         if msg == None:
             msg = "No reason provided."
