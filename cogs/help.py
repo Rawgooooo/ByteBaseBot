@@ -3,12 +3,14 @@ from discord.ext import commands
 
 server_c = [{"name":"🛠️ server", "desc":"Get your current server details"},
             {"name":"avatar", "desc":"Look at the avatar of anyone"},
+            {"name": "👨 whois", "desc": "Get profile details of the person you mention"},
             {"name": "🚪 invite", "desc": "Invite the bot to your server"},
             {"name": "🚪 createinvite", "desc": "create this server's invite link"},
             {"name": "💡 bytebaseinvite", "desc": "Join our server"},
             {"name": "prefix", "desc": "Change my prefix for this server"},
+            {"name": "run", "desc": "Run python script"},
             {"name": "serverdecorators", "desc": "Decorate your server with these!!"},
-            {"name":"👨 whois", "desc":"Get profile details of the person you mention"}]
+            {"name": "about", "desc": "About the bot and its dev"}]
 
 Mod_c = [{"name":"addrole", "desc":"Grants a person the role"},
          {"name":"delrole", "desc":"removes role from the person"},
