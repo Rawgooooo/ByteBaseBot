@@ -7,14 +7,21 @@ class VC_commands(commands.Cog):
 # _______________________________________
 
     # Vc
-    @commands.command(help="Join your vc")
+    @commands.command(pass_context=True)
     async def join(self, ctx):
-        channel = ctx.author.voice.channel
-        await channel.connect()
+        if ctx.author.voice:
+            channel = ctx.author.voice.channel
+            await channel.connect()
+        else:
+            await ctx.send(":red_circle: You must be connected to a voice channel.")
 
-    @commands.command(help="Leave vc")
+    @commands.command(pass_context=True)
     async def leave(self, ctx):
-        await ctx.voice_client.disconnect()
+        if ctx.voice_client:
+            await ctx.voice_client.disconnect()
+            await ctx.send("I left the voice channel.")
+        else:
+            await ctx.send("I was never connected to a VC!")
     # ______________________________
 # ________________________________________
 
