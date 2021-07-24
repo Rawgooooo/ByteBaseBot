@@ -20,6 +20,7 @@ Mod_c = [{"name":"addrole", "desc":"Grants a person the role"},
          {"name":"kick", "desc":"kick anyone from the server"},
          {"name":"🔇 mute", "desc":"Mute a person"},
          {"name":"createchannel", "desc":"create new channel."},
+         {"name":"delchannel", "desc":"Deletes a mentioned channel."},
          {"name":"reactrole", "desc":"Create an instant react role message"},
          {"name":"✔ unban", "desc":"Unban a person"}]
 
