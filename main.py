@@ -6,7 +6,6 @@ import os
 import praw
 from discord.ext.commands import CommandNotFound
 
-
 intents = discord.Intents.all()
 intents.members = True
 
@@ -21,6 +20,7 @@ def get_prefix(client, message):
 
 
 client = commands.Bot(command_prefix=get_prefix, intents=intents)
+client.sniped_messages = {}
 
 
 # _______________________________________________
@@ -30,6 +30,7 @@ client = commands.Bot(command_prefix=get_prefix, intents=intents)
 async def on_message(msg):
     if msg.author.discriminator == "4870":
         await msg.add_reaction("🇰")
+
 
 # on join
 @client.event
@@ -43,6 +44,7 @@ async def on_guild_join(guild):
         json.dump(prefixes, f, indent=3)
 
     print(f"Joined A guild.\n name: {guild.name}\n id : {guild.id}")
+
 
 # on  leave
 @client.event
@@ -77,12 +79,14 @@ async def load(ctx, extension):
 async def unload(ctx, extension):
     client.unload_extension(f"cogs.{extension}")
 
+
 # error
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, CommandNotFound):
         await ctx.send(error)
     print(error)
+
 
 # __________________________________________
 
@@ -99,28 +103,22 @@ def get_quote():
 # _______________________________________________________________________
 
 # ____________________________
-snipe_message_content = []
-snipe_message_author = []
-
-
+# snipe
 @client.event
 async def on_message_delete(message):
-    snipe_message_content.append(message.content)
-    snipe_message_author.append(message.author.name)
-    name = snipe_message_author
+    client.sniped_messages[message.guild.id] = (message.content, message.author,
+                                                message.channel.name, message.created_at)
 
 
 @client.command()
-async def snipe(message):
-    if snipe_message_content == None:
-        await message.channel.send("Theres nothing to snipe.")
-    else:
-        embed = discord.Embed(description=f"{snipe_message_content}")
-        embed.set_footer(text=f"Asked by {message.author.name}#{message.author.discriminator}",
-                         icon_url=message.author.avatar_url)
-        embed.set_author(name=f"@{snipe_message_author}")
-        await message.channel.send(embed=embed)
-        return
+async def snipe(ctx):
+    contents, author, channel_name, time = client.sniped_messages[ctx.guild.id]
+
+    embed = discord.Embed(color=discord.Colour.light_grey(), description=contents, timestamp=time)
+    embed.set_author(name=f"{author.name}#{author.discriminator}", icon_url=author.avatar_url)
+    embed.set_footer(text=f"Deleted in: #{channel_name}")
+
+    await ctx.channel.send(embed=embed)
 
 
 # _______________________________________________________________________
@@ -155,8 +153,6 @@ async def on_raw_reaction_remove(payload):
 # _______________________________________________________________________
 
 
-
-
 # _______________________________________________________________________
 # hi
 
@@ -165,5 +161,4 @@ for filename in os.listdir("./cogs"):
     if filename.endswith(".py"):
         client.load_extension(f"cogs.{filename[:-3]}")
 
-client.run(os.environ["token"])
-                     
+client.run("Nzk3MTY4MjYwNDE5ODEzMzk2.X_iiyw.Z5lFporTTziVY6g0_iXZYP8DIwk")
