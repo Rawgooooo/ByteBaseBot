@@ -372,13 +372,31 @@ class MOD_commands(commands.Cog):
     # else:
     # await ctx.send(f'No channel named, "{channel_name}", was found')
 
+    # ________________________________________________
     # create channel
     @commands.command()
     @has_permissions(manage_channels=True)
     async def createchannel(self, ctx, *, name):
         names = name.split()
+        em = discord.Embed(color=discord.Colour.blue(), title="Create channel")
+        em.set_thumbnail(url=ctx.author.avatar_url)
+        em.set_footer(text=f"Channels created by {ctx.author.mention}", icon_url=ctx.author.avatar_url)
+
         for i in names:
             await ctx.guild.create_text_channel(i)
+            em.add_field(name="Name:", value=f"`{i}`")
+
+        await ctx.send(embed=em)
+
+    # delete channel
+    @commands.command()
+    @has_permissions(manage_channels=True)
+    async def delchannel(self, ctx, channel:discord.TextChannel):
+        await channel.delete()
+        em = discord.Embed(color=discord.Colour.purple())
+        em.set_thumbnail(url=ctx.author.avatar_url)
+        em.add_field(name="Channels deleted", value=f"\n\n`{channel}` was deleted by {ctx.author.name}")
+        await ctx.send(embed=em)
 
 
 
