@@ -10,7 +10,7 @@ server_c = [{"name":"🛠️ server", "desc":"Get your current server details"},
             {"name": "prefix", "desc": "Change my prefix for this server"},
             {"name": "run", "desc": "Run python script"},
             {"name": "serverdecorators", "desc": "Decorate your server with these!!"},
-            {"name": "about", "desc": "About the bot and its dev"}]
+            {"name": "<:logo:860361312454574100> about", "desc": "About the bot and its dev"}]
 
 Mod_c = [{"name":"addrole", "desc":"Grants a person the role"},
          {"name":"delrole", "desc":"removes role from the person"},
