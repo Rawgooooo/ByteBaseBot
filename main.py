@@ -4,7 +4,6 @@ import discord
 from discord.ext import commands
 import os
 import praw
-from discord.ext.commands import CommandNotFound
 
 intents = discord.Intents.all()
 intents.members = True
@@ -81,11 +80,11 @@ async def unload(ctx, extension):
 
 
 # error
-@client.event
-async def on_command_error(ctx, error):
-    if isinstance(error, CommandNotFound):
-        await ctx.send(error)
-    print(error)
+@client.event 
+async def on_command_error(ctx, error): 
+    if isinstance(error, commands.CommandNotFound): 
+        em = discord.Embed(title=f"Error!!!", description=error, color=discord.Colour.red()) 
+        await ctx.send(embed=em)
 
 
 # __________________________________________
