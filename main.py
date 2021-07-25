@@ -81,7 +81,7 @@ async def unload(ctx, extension):
 # error
 @client.event
 async def on_command_error(ctx, error):
-    if isinstance(error, CommandNotFound):
+    if isinstance(error, commands.CommandNotFound):
         await ctx.send(f"`{error}`")
 
 
