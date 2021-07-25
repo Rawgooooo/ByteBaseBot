@@ -299,7 +299,7 @@ class MOD_commands(commands.Cog):
         res = await self.client.wait_for("button_click", check=lambda interact: interact.user.id == ctx.author.id and interact.message.id == kickbut.id)
         if res.channel == ctx.channel:
             if res.component.id == "kick":
-                await member.ban(reason=reason)
+                await member.kick(reason=reason)
                 await res.respond(
                     type=InteractionType.ChannelMessageWithSource,
                     content=f"{member.mention} has been KICKED!!!"
