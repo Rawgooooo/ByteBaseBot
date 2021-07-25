@@ -203,10 +203,16 @@ class MOD_commands(commands.Cog):
     @nick.error
     async def nick_error(self, ctx, error):
         if isinstance(error, commands.MissingPermissions):
-            await ctx.send('You do not have manage_messages permission')
+            await ctx.send('You do not have permission to change Nickname')
+        elif isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send(
+                f'{ctx.message.author.mention} There is an Argument missing in that command! :red_circle:\nNickname Command Syntax: .nick @user name')
+        elif isinstance(error, commands.BadArgument):
+            await ctx.send(
+                f'{ctx.message.author.mention} To change nickname of someone you need to mention them and the nickname :red_circle:\nnick Command Syntax: .nick @user name ')
         else:
             await ctx.send("I don't have perms to do that! :red_circle:")
-            print(error)    
+            print(error) 
     
     # _______________________________
     # clear
