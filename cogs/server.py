@@ -18,6 +18,7 @@ class server(commands.Cog):
 
         embed2 = discord.Embed(timestamp=ctx.message.created_at, color=ctx.author.color)
         embed2.add_field(name='Name', value=f"{ctx.guild.name}")
+        embed2.add_field(name='ID', value=f"{ctx.guild.id}")
         embed2.add_field(name='Owner', value=owner)
         embed2.add_field(name='Verification Level', value=str(ctx.guild.verification_level), inline=False)
         embed2.add_field(name="Region:", value=region.title(), inline=False)
@@ -147,14 +148,17 @@ class server(commands.Cog):
     # run CODE
     @commands.command()
     async def run(self, ctx, *, code):
-        str_obj = io.StringIO()  # Retrieves a stream of data
-        try:
-            with contextlib.redirect_stdout(str_obj):
-                exec(code)
-        except Exception as e:
-            return await ctx.send(f"```{e.__class__.__name__}: {e}```")
+        if ctx.guild.id == 623776533244280842:
+            str_obj = io.StringIO()  # Retrieves a stream of data
+            try:
+                with contextlib.redirect_stdout(str_obj):
+                    exec(code)
+            except Exception as e:
+                return await ctx.send(f"```{e.__class__.__name__}: {e}```")
 
-        await ctx.send(f'```{str_obj.getvalue()}```')
+            await ctx.send(f'```{str_obj.getvalue()}```')
+        else:
+            await ctx.send("Please join ByteBase server to test this command!!")
 
     # ____________________________
     # ABOUT
@@ -164,26 +168,25 @@ class server(commands.Cog):
         embed.set_footer(text="Make sure to get along with the *BOT*!!", icon_url=self.client.user.avatar_url)
         embed.set_thumbnail(url=self.client.user.avatar_url)
 
-        embed.add_field(name=f"Hello {ctx.author.name}", value="Hmm.. how can I put this????... The bot was basically" 
-                                                               " made for its revolutionary features, some fun commands, Unique Mod functions"
-                                                               " and completely easy to commands!!", inline=False)
+        embed.add_field(name=f"Hello {ctx.author.name}", value="hmm. how can I put this????... The bot was basically" 
+                                                               "made for its revolutionary features, some fun commands, Unique Mod functions"
+                                                               "and completely easy to commands!!", inline=False)
 
         embed.add_field(name="More...", value=" The bot was developed with the idea of simplicity and uniqueness. "
                                               " Making server management completely easy at your finger tips!!."
-                                              " Not just that but you also have some fun commands like `roast`, `8ball`, `rip/wanted`."
+                                              " Not just that but you also have some fun commands like *roast*, *8ball*, *rip/wanted*."
                                               " And some globalized economy commands, and info gathering commands such as stock prices and cryptocurrency updates!!"
-                                              " We also provide a revolutionary game `TIC-TAC-TOE` and much more upcoming games!!"
+                                              " We also provide a revolutionary game **TIC-TAC-TOE** and much more upcoming games!!"
                                               " You can even run a python code with this bot in discord itself!!", inline=False)
 
-        embed.add_field(name="DEVELOPER!", value="Now something about me... I am **Mr.X** a professional programmer and coder who excels in `python` and `javascript`!!"
+        embed.add_field(name="DEVELOPER!", value="Now something about me... I am **Mr.X** a professional programmer and coder who excels in *python* and *javascript*!!"
                                                  " I also know some Web development that I'm implying in the bots website dashboard(upcoming feature)."
-                                                 " I initially made the bot for making server management easy for my **Programming GUILD** and **YT channel**!"
-                                                 " I teach Programming in my [channel](https://www.youtube.com/channel/UCGeiFuZeOU-PBiaa3bt6lGQ)."
+                                                 " I initially made the bot for making server management easy for my **Programming GUILD** and *YT channel*!"
+                                                 " I teach Programming in my [Channel](https://www.youtube.com/channel/UCGeiFuZeOU-PBiaa3bt6lGQ)."
                                                  " I also hold a [discord community](https://discord.gg/RweEFh7WeU) for the same.\n"
                                                  "-- | Mr.X#0007 |", inline=False)
 
         await ctx.send(embed=embed)
-
 # ______________________________________________________________________
 
 def setup(client):
