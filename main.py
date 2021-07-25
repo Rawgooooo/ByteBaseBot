@@ -61,7 +61,7 @@ async def on_message(msg):
             prefixes = json.load(f)
 
         pre = prefixes[str(msg.guild.id)]
-        await msg.channel.send(f"My prefix for this server is '{pre}'")
+        await msg.channel.send(f"My prefix for this server is `{pre}`")
 
     await client.process_commands(msg)
 
