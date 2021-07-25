@@ -8,7 +8,17 @@ server_c = [{"name":"🛠️ server", "desc":"Get your current server details"},
             {"name": "🚪 createinvite", "desc": "create this server's invite link"},
             {"name": "💡 bytebaseinvite", "desc": "Join our server"},
             {"name": "prefix", "desc": "Change my prefix for this server"},
-            {"name": "run", "desc": "Run python script"},
+            {"name": "serverdecorators", "desc": "Decorate your server with these!!"},
+            {"name": "<:logo:860361312454574100> about", "desc": "About the bot and its dev"}]
+
+serverbb = [{"name":"🛠️ server", "desc":"Get your current server details"},
+            {"name":"avatar", "desc":"Look at the avatar of anyone"},
+            {"name": "👨 whois", "desc": "Get profile details of the person you mention"},
+            {"name": "🚪 invite", "desc": "Invite the bot to your server"},
+            {"name": "🚪 createinvite", "desc": "create this server's invite link"},
+            {"name": "💡 bytebaseinvite", "desc": "Join our server"},
+            {"name": "run", "desc": "Run py program from discord"},
+            {"name": "prefix", "desc": "Change my prefix for this server"},
             {"name": "serverdecorators", "desc": "Decorate your server with these!!"},
             {"name": "<:logo:860361312454574100> about", "desc": "About the bot and its dev"}]
 
@@ -100,14 +110,25 @@ class help(commands.Cog):
             await ctx.send(embed=em0)
 
         elif page == 1:
-            em1 = discord.Embed(title="**COMMANDS HELP** • UTILITIES", color=discord.Colour.random())
-            em1.set_thumbnail(url=self.client.user.avatar_url)
-            em1.set_footer(text="For further help do .help <command name> ", icon_url=self.client.user.avatar_url)
-            for item in server_c:
-                name = item["name"]
-                desc = item["desc"]
-                em1.add_field(name=name, value=desc)
-            await ctx.send(embed=em1)
+            server_id = ctx.message.guild.id
+            if server_id == 623776533244280842:
+                em1 = discord.Embed(title="**COMMANDS HELP** • UTILITIES", color=discord.Colour.random())
+                em1.set_thumbnail(url=self.client.user.avatar_url)
+                em1.set_footer(text="For further help do .help <command name> ", icon_url=self.client.user.avatar_url)
+                for item in serverbb:
+                    name = item["name"]
+                    desc = item["desc"]
+                    em1.add_field(name=name, value=desc)
+                await ctx.send(embed=em1)
+            else:
+                em1 = discord.Embed(title="**COMMANDS HELP** • UTILITIES", color=discord.Colour.random())
+                em1.set_thumbnail(url=self.client.user.avatar_url)
+                em1.set_footer(text="For further help do .help <command name> ", icon_url=self.client.user.avatar_url)
+                for item in server_c:
+                    name = item["name"]
+                    desc = item["desc"]
+                    em1.add_field(name=name, value=desc)
+                await ctx.send(embed=em1)
 
         elif page == 2:
             em2 = discord.Embed(title="**COMMANDS HELP** • MANAGEMENT", color=discord.Colour.random())
