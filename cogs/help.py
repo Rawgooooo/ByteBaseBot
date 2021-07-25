@@ -22,7 +22,7 @@ serverbb = [{"name":"🛠️ server", "desc":"Get your current server details"},
             {"name": "serverdecorators", "desc": "Decorate your server with these!!"},
             {"name": "<:logo:860361312454574100> about", "desc": "About the bot and its dev"}]
 
-Mod_c = [{"name":"addrole", "desc":"Grants a person the role"},
+mod_c = [{"name": "addrole", "desc": "Grants a person the role"},
          {"name":"delrole", "desc":"removes role from the person"},
          {"name":"📢 announce", "desc":"Announce something"},
          {"name":"⚠ Warn", "desc":"Warn a user!"},
@@ -55,7 +55,7 @@ common_c = [{"name": "🤖 bot", "desc": "Call the bot"},
             {"name": "opinion", "desc": "Get some unpopular opinions"}]
 
 
-Economy_c = [{"name": "💰 balance", "desc":"Check your money balance"},
+economy_c = [{"name": "💰 balance", "desc": "Check your money balance"},
              {"name": "🥺 beg", "desc": "Beg for money"},
              {"name": "🏬 buy", "desc": "Buy items from store"},
              {"name": "💰 deposit", "desc": "Deposit some cash in bank"},
@@ -67,9 +67,9 @@ Economy_c = [{"name": "💰 balance", "desc":"Check your money balance"},
              {"name": "₿ cryptocurrency", "desc": "Check crypto currency prices!"},
              {"name": "🔒 status", "desc": "Active Passive stop ROB"}]
 
-Games_c = [{"name": "⭕ tictactoe :x:", "desc": "Play the famous XO"}]
+games_c = [{"name": "⭕ tictactoe :x:", "desc": "Play the famous XO"}]
 
-VC_c = [{"name": "📞 join", "desc": "Join VC"},
+vc_c = [{"name": "📞 join", "desc": "Join VC"},
         {"name": "⛔ leave", "desc": "Leave VC"}]
 
 math = [{"name":"+ • add", "desc":"Add multiple numbers"},
@@ -134,7 +134,7 @@ class help(commands.Cog):
             em2 = discord.Embed(title="**COMMANDS HELP** • MANAGEMENT", color=discord.Colour.random())
             em2.set_thumbnail(url=self.client.user.avatar_url)
             em2.set_footer(text="For further help do .help <command name> ", icon_url=self.client.user.avatar_url)
-            for item in Mod_c:
+            for item in mod_c:
                 name = item["name"]
                 desc = item["desc"]
                 em2.add_field(name=name, value=desc)
@@ -154,7 +154,7 @@ class help(commands.Cog):
             em4 = discord.Embed(title="**COMMANDS HELP** • ECONOMY", color=discord.Colour.random())
             em4.set_thumbnail(url=self.client.user.avatar_url)
             em4.set_footer(text="For further help do .help <command name> ", icon_url=self.client.user.avatar_url)
-            for item in Economy_c:
+            for item in economy_c:
                 name = item["name"]
                 desc = item["desc"]
                 em4.add_field(name=name, value=desc)
@@ -164,7 +164,7 @@ class help(commands.Cog):
             em5 = discord.Embed(title="**COMMANDS HELP** • GAMES", color=discord.Colour.random())
             em5.set_thumbnail(url=self.client.user.avatar_url)
             em5.set_footer(text="For further help do .help <command name> ", icon_url=self.client.user.avatar_url)
-            for item in Games_c:
+            for item in games_c:
                 name = item["name"]
                 desc = item["desc"]
                 em5.add_field(name=name, value=desc, inline=False)
@@ -174,7 +174,7 @@ class help(commands.Cog):
             em6 = discord.Embed(title="**COMMANDS HELP** • VC", color=discord.Colour.random())
             em6.set_thumbnail(url=self.client.user.avatar_url)
             em6.set_footer(text="For further help do .help <command name> ", icon_url=self.client.user.avatar_url)
-            for item in VC_c:
+            for item in vc_c:
                 name = item["name"]
                 desc = item["desc"]
                 em6.add_field(name=name, value=desc, inline=False)
