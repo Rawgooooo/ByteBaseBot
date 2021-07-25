@@ -291,9 +291,9 @@ class MOD_commands(commands.Cog):
 
         kickbut = await ctx.send(
             embed=embed,
-            components=[
+            components=[[
                 Button(style=ButtonStyle.red, label="KICK!!", id="kick"),
-                Button(style=ButtonStyle.blue, label="Cancel", id="no")
+                Button(style=ButtonStyle.blue, label="Cancel", id="no")]
             ],
         )
         res = await self.client.wait_for("button_click", check=lambda interact: interact.user.id == ctx.author.id and interact.message.id == kickbut.id)
@@ -343,9 +343,9 @@ class MOD_commands(commands.Cog):
 
         banbut = await ctx.send(
             embed=embed,
-            components=[
+            components=[[
                 Button(style=ButtonStyle.red, label="BAN!!", id="ban"),
-                Button(style=ButtonStyle.blue, label="Cancel", id="no")
+                Button(style=ButtonStyle.blue, label="Cancel", id="no")]
             ],
         )
         res = await self.client.wait_for("button_click", check=lambda interact: interact.user.id == ctx.author.id and interact.message.id == banbut.id)
