@@ -169,19 +169,19 @@ class server(commands.Cog):
         embed.set_thumbnail(url=self.client.user.avatar_url)
 
         embed.add_field(name=f"Hello {ctx.author.name}", value="hmm. how can I put this????... The bot was basically" 
-                                                               "made for its revolutionary features, some fun commands, Unique Mod functions"
-                                                               "and completely easy to commands!!", inline=False)
+                                                               " made for its revolutionary features, some fun commands, Unique Mod functions"
+                                                               " and completely easy to commands!!", inline=False)
 
         embed.add_field(name="More...", value=" The bot was developed with the idea of simplicity and uniqueness. "
                                               " Making server management completely easy at your finger tips!!."
-                                              " Not just that but you also have some fun commands like *roast*, *8ball*, *rip/wanted*."
+                                              " Not just that but you also have some fun commands like `roast`, `8ball`, `rip/wanted`."
                                               " And some globalized economy commands, and info gathering commands such as stock prices and cryptocurrency updates!!"
                                               " We also provide a revolutionary game **TIC-TAC-TOE** and much more upcoming games!!"
-                                              " You can even run a python code with this bot in discord itself!!", inline=False)
+                                              " You can even run a python code with this bot in discord itself!! (Available only in our community server for safety purposes)", inline=False)
 
         embed.add_field(name="DEVELOPER!", value="Now something about me... I am **Mr.X** a professional programmer and coder who excels in *python* and *javascript*!!"
                                                  " I also know some Web development that I'm implying in the bots website dashboard(upcoming feature)."
-                                                 " I initially made the bot for making server management easy for my **Programming GUILD** and *YT channel*!"
+                                                 " I initially made the bot for making server management easy for my **Programming GUILD** and **YT channel**!"
                                                  " I teach Programming in my [Channel](https://www.youtube.com/channel/UCGeiFuZeOU-PBiaa3bt6lGQ)."
                                                  " I also hold a [discord community](https://discord.gg/RweEFh7WeU) for the same.\n"
                                                  "-- | Mr.X#0007 |", inline=False)
