@@ -280,11 +280,35 @@ class MOD_commands(commands.Cog):
     @commands.command()
     @has_permissions(manage_roles=True, kick_members=True)
     async def kick(self, ctx, member: discord.Member, *, reason=None):
-        if ctx.author.guild_permissions.administrator:
-            if reason == None:
-                reason = "No reason was given"
-            await member.kick(reason=reason)
-            await ctx.send(f"{member.mention} has been KICKED by {ctx.message.author.mention}\n Reason:{reason}")
+        if reason == None:
+            reason = "No reason was given"
+        # await ctx.send(f"Banned {member.mention}\n Reason:{reason}")
+
+        embed = discord.Embed(color=discord.Colour.red(), title="❌ KICK CONFORMATION ❌", description=f"Are your sure you want to kick {member.mention}?")
+        embed.set_footer(text=f"Kick request by {ctx.author.name}", icon_url=ctx.author.avatar_url)
+        embed.add_field(name="Reason:", value=reason)
+        embed.set_thumbnail(url=member.avatar_url)
+
+        kickbut = await ctx.send(
+            embed=embed,
+            components=[
+                Button(style=ButtonStyle.red, label="KICK!!", id="kick"),
+                Button(style=ButtonStyle.blue, label="Cancel", id="no")
+            ],
+        )
+        res = await self.client.wait_for("button_click", check=lambda interact: interact.user.id == ctx.author.id and interact.message.id == kickbut.id)
+        if res.channel == ctx.channel:
+            if res.component.id == "kick":
+                await member.ban(reason=reason)
+                await res.respond(
+                    type=InteractionType.ChannelMessageWithSource,
+                    content=f"{member.mention} has been KICKED!!!"
+                )
+            elif res.component.id == "no":
+                await res.respond(
+                    type=InteractionType.ChannelMessageWithSource,
+                    content=f"{member.mention}'s KICK has been CANCELED!!"
+                )
 
     @kick.error
     async def kick_error(self, ctx, error):
@@ -320,7 +344,7 @@ class MOD_commands(commands.Cog):
         banbut = await ctx.send(
             embed=embed,
             components=[
-                Button(style=ButtonStyle.red, label="Ban!!", id="ban"),
+                Button(style=ButtonStyle.red, label="BAN!!", id="ban"),
                 Button(style=ButtonStyle.blue, label="Cancel", id="no")
             ],
         )
