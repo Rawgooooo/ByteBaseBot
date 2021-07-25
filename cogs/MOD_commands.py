@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
+from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType
 import json
 import datetime
 import asyncio
@@ -10,6 +11,7 @@ import random
 class MOD_commands(commands.Cog):
     def __init__(self, client):
         self.client = client
+        DiscordComponents(client)
 
     # _______________________________________________________
 
@@ -167,6 +169,10 @@ class MOD_commands(commands.Cog):
 
     # _____________________________________
     # warn
+    @commands.Cog.listener()
+    async def on_guild_join(self, guild):
+        self.client.warnings[guild.id] = {}
+
     @commands.command()
     @has_permissions(administrator=True)
     async def warn(self, ctx, user: discord.Member, *, msg=None):
@@ -187,7 +193,6 @@ class MOD_commands(commands.Cog):
         await ctx.send(embed=em)
 
     # _______________________________
-
     # clear
     @commands.command(aliases=["purge"])
     @has_permissions(manage_messages=True)
@@ -291,7 +296,7 @@ class MOD_commands(commands.Cog):
                 f'{ctx.message.author.mention} There is an Argument missing in that command! :red_circle:\nKick Command Syntax: .kick @user ')
         elif isinstance(error, commands.BadArgument):
             await ctx.send(
-                f'{ctx.message.author.mention} To mute someone you need to mention them! :red_circle:\nKick Command Syntax: .kick @user ')
+                f'{ctx.message.author.mention} To Kick someone you need to mention them! :red_circle:\nKick Command Syntax: .kick @user ')
         else:
             await ctx.send(
                 'There was an error while executing the command! Boss has been informed! :red_circle:')
@@ -303,11 +308,35 @@ class MOD_commands(commands.Cog):
     @commands.command()
     @has_permissions(manage_roles=True, ban_members=True)
     async def ban(self, ctx, member: discord.Member, *, reason=None):
+        if reason == None:
+            reason = "No reason was given"
+        # await ctx.send(f"Banned {member.mention}\n Reason:{reason}")
 
-        if ctx.author.guild_permissions.administrator:
-            if reason == None:
-                reason = "No reason was given"
-            await ctx.send(f"Banned {member.mention}\n Reason:{reason}")
+        embed = discord.Embed(color=discord.Colour.red(), title="⛔ BAN CONFORMATION ⛔", description=f"Are your sure you want to ban {member.mention}?")
+        embed.set_footer(text=f"Ban request by {ctx.author.name}", icon_url=ctx.author.avatar_url)
+        embed.add_field(name="Reason:", value=reason)
+        embed.set_thumbnail(url=member.avatar_url)
+
+        banbut = await ctx.send(
+            embed=embed,
+            components=[
+                Button(style=ButtonStyle.red, label="Ban!!", id="ban"),
+                Button(style=ButtonStyle.blue, label="Cancel", id="no")
+            ],
+        )
+        res = await self.client.wait_for("button_click", check=lambda interact: interact.user.id == ctx.author.id and interact.message.id == banbut.id)
+        if res.channel == ctx.channel:
+            if res.component.id == "ban":
+                await member.ban(reason=reason)
+                await res.respond(
+                    type=InteractionType.ChannelMessageWithSource,
+                    content=f"{member.mention} has been BANNED!!!"
+                )
+            elif res.component.id == "no":
+                await res.respond(
+                    type=InteractionType.ChannelMessageWithSource,
+                    content=f"{member.mention}'s BAN has been CANCELED!!"
+                )
 
     @ban.error
     async def ban_error(self, ctx, error):
@@ -319,11 +348,11 @@ class MOD_commands(commands.Cog):
                 f'{ctx.message.author.mention} There is an Argument missing in that command! :red_circle:\nBan Command Syntax: .ban @user ')
         elif isinstance(error, commands.BadArgument):
             await ctx.send(
-                f'{ctx.message.author.mention} To mute someone you need to mention them! :red_circle:\nBan Command Syntax: .ban @user ')
+                f'{ctx.message.author.mention} To Ban someone you need to mention them! :red_circle:\nBan Command Syntax: .ban @user ')
         else:
+            print(error)
             await ctx.send(
                 'There was an error while executing the command! Boss has been informed! :red_circle:')
-            print(error)
 
     # unban
     @commands.command()
@@ -372,7 +401,7 @@ class MOD_commands(commands.Cog):
     # else:
     # await ctx.send(f'No channel named, "{channel_name}", was found')
 
-    # ________________________________________________
+    # __________________________________
     # create channel
     @commands.command()
     @has_permissions(manage_channels=True)
@@ -391,13 +420,13 @@ class MOD_commands(commands.Cog):
     # delete channel
     @commands.command()
     @has_permissions(manage_channels=True)
-    async def delchannel(self, ctx, channel:discord.TextChannel):
+    async def delchannel(self, ctx, channel: discord.TextChannel):
         await channel.delete()
         em = discord.Embed(color=discord.Colour.purple())
         em.set_thumbnail(url=ctx.author.avatar_url)
         em.add_field(name="Channels deleted", value=f"\n\n`{channel}` was deleted by {ctx.author.name}")
-        await ctx.send(embed=em)
 
+        await ctx.send(embed=em)
 
 
 # ________________________________________________________
