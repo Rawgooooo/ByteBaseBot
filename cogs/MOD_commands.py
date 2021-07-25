@@ -193,6 +193,22 @@ class MOD_commands(commands.Cog):
         await ctx.send(embed=em)
 
     # _______________________________
+    # nickname
+    @commands.command(pass_context=True)
+    @has_permissions(manage_nicknames=True)
+    async def nick(self, ctx, member: discord.Member, nick):
+        await member.edit(nick=nick)
+        await ctx.send(f'Nickname was changed for {member.mention} ')
+
+    @nick.error
+    async def nick_error(self, ctx, error):
+        if isinstance(error, commands.MissingPermissions):
+            await ctx.send('You do not have manage_messages permission')
+        else:
+            await ctx.send("I don't have perms to do that! :red_circle:")
+            print(error)    
+    
+    # _______________________________
     # clear
     @commands.command(aliases=["purge"])
     @has_permissions(manage_messages=True)
