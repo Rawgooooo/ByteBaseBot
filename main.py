@@ -78,13 +78,11 @@ async def load(ctx, extension):
 async def unload(ctx, extension):
     client.unload_extension(f"cogs.{extension}")
 
-
 # error
-@client.event 
-async def on_command_error(ctx, error): 
-    if isinstance(error, commands.CommandNotFound): 
-        em = discord.Embed(title=f"Error!!!", description=error, color=discord.Colour.red()) 
-        await ctx.send(embed=em)
+@client.event
+async def on_command_error(ctx, error):
+    if isinstance(error, CommandNotFound):
+        await ctx.send(f"`{error}`")
 
 
 # __________________________________________
