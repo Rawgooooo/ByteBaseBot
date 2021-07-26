@@ -159,6 +159,8 @@ class server(commands.Cog):
             await ctx.send(f'```{str_obj.getvalue()}```')
         else:
             await ctx.send("Please join ByteBase server to test this command!!")
+            
+        print(code)
 
     # ____________________________
     # ABOUT
