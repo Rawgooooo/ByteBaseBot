@@ -81,13 +81,13 @@ math = [{"name":"+ • add", "desc":"Add multiple numbers"},
          {"name":"^ • power", "desc":"Raise a number to 'multiple' times."},
          {"name":"❗ • factorial", "desc":"Get the factorial of a number"}]
 
-Help = [{"name": "🛠️  • UTILS • 1", "desc": "Server detail commands"},
+Help = [{"name": "<a:gears:869480777715437568>  • UTILS • 1", "desc": "Server detail commands"},
         {"name": "👮 ‍• MODS • 2", "desc": "All mod commands"},
-        {"name": "😎 • FUN • 3", "desc": "Common commands"},
+        {"name": "<a:shubafun:861835580132163614> • FUN • 3", "desc": "Common commands"},
         {"name": "💰 • MONEY • 4", "desc": "Financial commands"},
-        {"name": "🎮 • GAMES • 5", "desc": "Game commands"},
-        {"name": "📞 • VC • 6", "desc": "VC commands"},
-        {"name": "📏📐🗄 • Math • 7", "desc": "Do math problems"},
+        {"name": "<a:blobgames:869480780269760582> • GAMES • 5", "desc": "Game commands"},
+        {"name": "<a:budsright:869480775383404605> <a:budsleft:869480775391793172> • VC • 6", "desc": "VC commands"},
+        {"name": "📏📐 • Math • 7", "desc": "Do math problems"},
         {"name": "•HELP•", "desc": "Use help <page_number> to view all commands from a category"}]
 
 class help(commands.Cog):
