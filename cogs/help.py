@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 
-
 server_c = [{"name":"<:info:869781223969542215> server", "desc":"Get your current server details"},
             {"name":"<:avatar:869781223436853329> avatar", "desc":"Look at the avatar of anyone"},
             {"name": "👨 whois", "desc": "Get profile details of the person you mention"},
@@ -10,6 +9,7 @@ server_c = [{"name":"<:info:869781223969542215> server", "desc":"Get your curren
             {"name": "<:logo:860361312454574100> bytebaseinvite", "desc": "Join our server"},
             {"name": "prefix", "desc": "Change my prefix for this server"},
             {"name": "serverdecorators", "desc": "Decorate your server with these!!"},
+            {"name": "<:upvote:869792030342119454> vote", "desc": "Vote for us on top.gg"},
             {"name": "<:logo:860361312454574100> about", "desc": "About the bot and its dev"}]
 
 serverbb = [{"name":"<:info:869781223969542215> server", "desc":"Get your current server details"},
