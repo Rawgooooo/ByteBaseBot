@@ -189,6 +189,21 @@ class server(commands.Cog):
                                                  "-- | Mr.X#0007 |", inline=False)
 
         await ctx.send(embed=embed)
+        
+        
+    # _______________________________
+    # vote
+    @commands.command()
+    async def vote(self, ctx):
+        embed = discord.Embed(
+            color=discord.Colour.dark_teal(),
+            title="<:upvote:869792030342119454> **VOTE**",
+            description="Vote for us on [Top.gg](https://top.gg/bot/797168260419813396/vote)"
+        )
+        embed.set_footer(text="Vote more to get in bot rewards!!!")
+        embed.set_thumbnail(url=self.client.user.avatar_url)
+        await ctx.send(embed=embed)
+# ________________________________________
 # ______________________________________________________________________
 
 def setup(client):
