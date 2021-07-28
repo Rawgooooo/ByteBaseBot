@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 
+
 server_c = [{"name":"<:info:869781223969542215> server", "desc":"Get your current server details"},
             {"name":"<:avatar:869781223436853329> avatar", "desc":"Look at the avatar of anyone"},
             {"name": "👨 whois", "desc": "Get profile details of the person you mention"},
@@ -17,14 +18,14 @@ serverbb = [{"name":"<:info:869781223969542215> server", "desc":"Get your curren
             {"name": "<:botinvite:869782042999652352> invite", "desc": "Invite the bot to your server"},
             {"name": "<:invite:869781224082792500> createinvite", "desc": "create this server's invite link"},
             {"name": "<:logo:860361312454574100> bytebaseinvite", "desc": "Join our server"},
-            {"name": "<:terminal:869782985505923082> run", "desc": "Run py program from discord"},
+            {"name": "<:terminal:869792962308108308> run", "desc": "Run py program from discord"},
             {"name": "prefix", "desc": "Change my prefix for this server"},
             {"name": "serverdecorators", "desc": "Decorate your server with these!!"},
             {"name": "<:logo:860361312454574100> about", "desc": "About the bot and its dev"}]
 
 mod_c = [{"name":"<:promote:869787796410335292> addrole", "desc": "Grants a person the role"},
          {"name":"<:demote:869787796108365834> removerole", "desc":"removes role from the person"},
-         {"name":"📢 announce", "desc":"Announce something"},
+         {"name":"<a:Announcement:869794447423057930> announce", "desc":"Announce something"},
          {"name":"⚠ Warn", "desc":"Warn a user!"},
          {"name":"<a:ban:869786390022455317> ban", "desc":"Ban anyone"},
          {"name":"<:kick:869784904823636019> kick", "desc":"kick anyone from the server"},
@@ -34,10 +35,9 @@ mod_c = [{"name":"<:promote:869787796410335292> addrole", "desc": "Grants a pers
          {"name":"reactrole", "desc":"Create an instant react role message"},
          {"name":"✔ unban", "desc":"Unban a person"}]
 
-
-common_c = [{"name": "🤖 bot", "desc": "Call the bot"},
-            {"name": "👋 hi", "desc": "Say hello to the bot"},
-            {"name": "❗ ping", "desc": "Check ping"},
+common_c = [{"name": "<:kewlbot:869789913653080104> bot", "desc": "Call the bot"},
+            {"name": "<:katowave:869790459076169788> hi", "desc": "Say hello to the bot"},
+            {"name": "<:999ping:869789914223501353> ping", "desc": "Check ping"},
             {"name": ":8ball: 8ball", "desc": "Ask the 8ball"},
             {"name": "empty text", "desc": "Get an empty text"},
             {"name": "🏳️‍🌈 gayrate", "desc": "Check how much of a gay someone is"},
@@ -52,11 +52,11 @@ common_c = [{"name": "🤖 bot", "desc": "Call the bot"},
             {"name": "translate", "desc": "language translate"},
             {"name": "⚰ rip", "desc": "Rip image for a person"},
             {"name": "wanted", "desc": "Make a wanted poster"},
-            {"name": "shit", "desc": "Step on shit meme"},
+            {"name": "💩 shit", "desc": "Step on shit meme"},
             {"name": "opinion", "desc": "Get some unpopular opinions"}]
 
 
-economy_c = [{"name": "💰 balance", "desc": "Check your money balance"},
+economy_c = [{"name": "<:dollarnote:869480775408554024> balance", "desc": "Check your money balance"},
              {"name": "🥺 beg", "desc": "Beg for money"},
              {"name": "🏬 buy", "desc": "Buy items from store"},
              {"name": "💰 deposit", "desc": "Deposit some cash in bank"},
