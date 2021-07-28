@@ -205,13 +205,13 @@ class Games(commands.Cog):
                     except:  # excepting trying-to-go-beyond-first-question error
                         pass
                     # editing embed for next question
-                    game_embed = discord.Embed(title=f"{str(ctx.author.nick)}'s game of Akinator", description=q,
+                    game_embed = discord.Embed(title=f"{str(ctx.author.name)}'s game of Akinator", description=q,
                                                url=r"https://en.akinator.com/", color=discord.Color.blurple())
                     continue
                 else:
                     q = await aki.answer(option_map[option.emoji])
                     # editing embed for next question
-                    game_embed = discord.Embed(title=f"{str(ctx.author.nick)}'s game of Akinator", description=q,
+                    game_embed = discord.Embed(title=f"{str(ctx.author.name)}'s game of Akinator", description=q,
                                                url=r"https://en.akinator.com/", color=discord.Color.blurple())
                     continue
 
