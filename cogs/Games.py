@@ -225,15 +225,16 @@ class Games(commands.Cog):
         result_message = await ctx.send(embed=result_embed)
         for emoji in ['✅', '❌']:
             await result_message.add_reaction(emoji)
-
+            
         option, _ = await self.client.wait_for('reaction_add', check=option_check, timeout=15)
         if option.emoji == '✅':
             final_embed = discord.Embed(title="I'm a genius", color=discord.Color.green())
+            return await ctx.send(embed=final_embed)
         elif option.emoji == '❌':
             final_embed = discord.Embed(title="Oof", description="Maybe try again?", color=discord.Color.red())
             # this does not restart/continue a game from where it was left off, but you can program that in if you like.
-
             return await ctx.send(embed=final_embed)
+
 
 
 # ______________________________________________________________________
