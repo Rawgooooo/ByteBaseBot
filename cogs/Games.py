@@ -1,5 +1,7 @@
 import discord
 from discord.ext import commands
+from discord_components import *
+from asyncio import TimeoutError
 import random
 from akinator.async_aki import Akinator
 
@@ -9,8 +11,7 @@ class Games(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    # ________________________________________________________________
-    # ________________________
+    # _________________________________________________________________
     # tic tac toe
     player1 = ""
     player2 = ""
@@ -163,10 +164,7 @@ class Games(commands.Cog):
             await ctx.send("Please enter a position you would like to mark. Correct Syntax: p1/2/3/4/5/6/7/8/9")
         elif isinstance(error, commands.BadArgument):
             await ctx.send("Please make sure to enter an integer.")
-            
-    # __________________________
-    # akinator
-    
+
     # _____________________
     # akinator
     @commands.command(name="akinator", aliases=["aki"])
@@ -238,8 +236,6 @@ class Games(commands.Cog):
             return await ctx.send(embed=final_embed)
 
 
-
 # ______________________________________________________________________
-
 def setup(client):
     client.add_cog(Games(client))
