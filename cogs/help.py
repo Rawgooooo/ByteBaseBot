@@ -1,38 +1,39 @@
 import discord
 from discord.ext import commands
 
-server_c = [{"name":"🛠️ server", "desc":"Get your current server details"},
-            {"name":"avatar", "desc":"Look at the avatar of anyone"},
+server_c = [{"name":"<:info:869781223969542215> server", "desc":"Get your current server details"},
+            {"name":"<:avatar:869781223436853329> avatar", "desc":"Look at the avatar of anyone"},
             {"name": "👨 whois", "desc": "Get profile details of the person you mention"},
-            {"name": "🚪 invite", "desc": "Invite the bot to your server"},
-            {"name": "🚪 createinvite", "desc": "create this server's invite link"},
-            {"name": "💡 bytebaseinvite", "desc": "Join our server"},
+            {"name": "<:botinvite:869782042999652352> invite", "desc": "Invite the bot to your server"},
+            {"name": "<:invite:869781224082792500> createinvite", "desc": "create this server's invite link"},
+            {"name": "<:logo:860361312454574100> bytebaseinvite", "desc": "Join our server"},
             {"name": "prefix", "desc": "Change my prefix for this server"},
             {"name": "serverdecorators", "desc": "Decorate your server with these!!"},
             {"name": "<:logo:860361312454574100> about", "desc": "About the bot and its dev"}]
 
-serverbb = [{"name":"🛠️ server", "desc":"Get your current server details"},
-            {"name":"avatar", "desc":"Look at the avatar of anyone"},
+serverbb = [{"name":"<:info:869781223969542215> server", "desc":"Get your current server details"},
+            {"name":"<:avatar:869781223436853329> avatar", "desc":"Look at the avatar of anyone"},
             {"name": "👨 whois", "desc": "Get profile details of the person you mention"},
-            {"name": "🚪 invite", "desc": "Invite the bot to your server"},
-            {"name": "🚪 createinvite", "desc": "create this server's invite link"},
-            {"name": "💡 bytebaseinvite", "desc": "Join our server"},
-            {"name": "run", "desc": "Run py program from discord"},
+            {"name": "<:botinvite:869782042999652352> invite", "desc": "Invite the bot to your server"},
+            {"name": "<:invite:869781224082792500> createinvite", "desc": "create this server's invite link"},
+            {"name": "<:logo:860361312454574100> bytebaseinvite", "desc": "Join our server"},
+            {"name": "<:terminal:869782985505923082> run", "desc": "Run py program from discord"},
             {"name": "prefix", "desc": "Change my prefix for this server"},
             {"name": "serverdecorators", "desc": "Decorate your server with these!!"},
             {"name": "<:logo:860361312454574100> about", "desc": "About the bot and its dev"}]
 
-mod_c = [{"name": "addrole", "desc": "Grants a person the role"},
-         {"name":"delrole", "desc":"removes role from the person"},
+mod_c = [{"name":"<:promote:869787796410335292> addrole", "desc": "Grants a person the role"},
+         {"name":"<:demote:869787796108365834> removerole", "desc":"removes role from the person"},
          {"name":"📢 announce", "desc":"Announce something"},
          {"name":"⚠ Warn", "desc":"Warn a user!"},
-         {"name":"🚫 ban", "desc":"Ban anyone"},
-         {"name":"kick", "desc":"kick anyone from the server"},
+         {"name":"<a:ban:869786390022455317> ban", "desc":"Ban anyone"},
+         {"name":"<:kick:869784904823636019> kick", "desc":"kick anyone from the server"},
          {"name":"🔇 mute", "desc":"Mute a person"},
          {"name":"createchannel", "desc":"create new channel."},
-         {"name":"delchannel", "desc":"Deletes a mentioned channel."},
+         {"name":"<:delete:869787110654234624> delchannel", "desc":"Deletes a mentioned channel."},
          {"name":"reactrole", "desc":"Create an instant react role message"},
          {"name":"✔ unban", "desc":"Unban a person"}]
+
 
 common_c = [{"name": "🤖 bot", "desc": "Call the bot"},
             {"name": "👋 hi", "desc": "Say hello to the bot"},
