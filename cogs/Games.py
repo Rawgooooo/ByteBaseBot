@@ -170,6 +170,9 @@ class Games(commands.Cog):
     @commands.command(name="akinator", aliases=["aki"])
     async def akinator_game(self, ctx):
         aki = Akinator()
+        embed = discord.Embed(color=discord.Color.blurple())
+        embed.add_field(name="Key", value="✅: yes, ❌: no, 🤔: maybe, 😕: maybe not, 🤷‍♂️: IDK, 🛑: end game")
+        await ctx.send(embed=embed)
         first = await ctx.send("Processing...")
         q = await aki.start_game()
 
@@ -177,12 +180,12 @@ class Games(commands.Cog):
                                    url=r"https://en.akinator.com/", color=discord.Color.blurple())
         game_embed.set_footer(text=f"Wait for the bot to add reactions before you give your response.")
 
-        option_map = {'✅': 'y', '❌': 'n', '🤷‍♂️': 'p', '😕': 'pn', '⁉️': 'i'}
+        option_map = {'✅': 'y', '❌': 'n', '🤔': 'p', '😕': 'pn', '🤷‍♂️': 'i'}
         """You can pick any emojis for the responses, I just chose what seemed to make sense.
           '✅' -> YES, '❌'-> NO, '🤷‍♂️'-> PROBABLY YES, '😕'-> PROBABLY NO, '⁉️'->IDK, '😔'-> force end game, '◀️'-> previous question"""
 
         def option_check(reaction, user):  # a check function which takes the user's response
-            return user == ctx.author and reaction.emoji in ['◀️', '✅', '❌', '🤷‍♂️', '😕', '⁉️', '😔']
+            return user == ctx.author and reaction.emoji in ['◀️', '✅', '❌', '🤔', '😕', '🤷‍♂️', '🛑']
 
         count = 0
         while aki.progression <= 80:  # this is aki's certainty level on an answer, per say. 80 seems to be a good number.
@@ -192,11 +195,11 @@ class Games(commands.Cog):
 
             game_message = await ctx.send(embed=game_embed)
 
-            for emoji in ['◀️', '✅', '❌', '🤷‍♂️', '😕', '⁉️', '😔']:
+            for emoji in ['◀️', '✅', '❌', '🤔', '😕', '🤷‍♂️', '🛑']: 
                 await game_message.add_reaction(emoji)
 
             option, _ = await self.client.wait_for('reaction_add', check=option_check)  # taking user's response
-            if option.emoji == '😔':  # there might be a better way to be doing this, but this seemed the simplest.
+            if option.emoji == '🛑':  # there might be a better way to be doing this, but this seemed the simplest.
                 return await ctx.send("Game ended.")
             async with ctx.channel.typing():
                 if option.emoji == '◀️':  # to go back to previous question
