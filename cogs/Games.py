@@ -228,7 +228,7 @@ class Games(commands.Cog):
             
         option, _ = await self.client.wait_for('reaction_add', check=option_check, timeout=15)
         if option.emoji == '✅':
-            final_embed = discord.Embed(title="I'm a genius", color=discord.Color.green())
+            final_embed = discord.Embed(title="That was **FUN**!!!", color=discord.Color.green())
             return await ctx.send(embed=final_embed)
         elif option.emoji == '❌':
             final_embed = discord.Embed(title="Oof", description="Maybe try again?", color=discord.Color.red())
