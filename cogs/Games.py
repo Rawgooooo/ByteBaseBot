@@ -5,6 +5,7 @@ from asyncio import TimeoutError
 import random
 from akinator.async_aki import Akinator
 
+
 # ____________________________________________________________________________
 
 class Games(commands.Cog):
@@ -172,13 +173,15 @@ class Games(commands.Cog):
         aki = Akinator()
         embed = discord.Embed(color=discord.Color.blurple())
         embed.add_field(name="Key", value="✅: yes, ❌: no, 🤔: maybe, 😕: maybe not, 🤷‍♂️: IDK, 🛑: end game")
+        embed.set_thumbnail(url="https://i.kym-cdn.com/entries/icons/facebook/000/006/117/akinator_1_defi.jpg")
         await ctx.send(embed=embed)
         first = await ctx.send("Processing...")
         q = await aki.start_game()
 
-        game_embed = discord.Embed(title=f"{str(ctx.author.name)}'s game of Akinator", description=q,
+        game_embed = discord.Embed(title=f"bb's game of Akinator", description=q,
                                    url=r"https://en.akinator.com/", color=discord.Color.blurple())
         game_embed.set_footer(text=f"Wait for the bot to add reactions before you give your response.")
+        game_embed.set_thumbnail(url="https://i.pinimg.com/originals/3c/e6/55/3ce6554630357a7b3821268bc049859d.png")
 
         option_map = {'✅': 'y', '❌': 'n', '🤔': 'p', '😕': 'pn', '🤷‍♂️': 'i'}
         """You can pick any emojis for the responses, I just chose what seemed to make sense.
@@ -195,7 +198,7 @@ class Games(commands.Cog):
 
             game_message = await ctx.send(embed=game_embed)
 
-            for emoji in ['◀️', '✅', '❌', '🤔', '😕', '🤷‍♂️', '🛑']: 
+            for emoji in ['◀️', '✅', '❌', '🤔', '😕', '🤷‍♂️', '🛑']:
                 await game_message.add_reaction(emoji)
 
             option, _ = await self.client.wait_for('reaction_add', check=option_check)  # taking user's response
@@ -208,14 +211,17 @@ class Games(commands.Cog):
                     except:  # excepting trying-to-go-beyond-first-question error
                         pass
                     # editing embed for next question
-                    game_embed = discord.Embed(title=f"{str(ctx.author.name)}'s game of Akinator", description=q,
+                    game_embed = discord.Embed(title=f"bb's game of Akinator", description=q,
                                                url=r"https://en.akinator.com/", color=discord.Color.blurple())
+                    game_embed.set_thumbnail(url="https://pbs.twimg.com/profile_images/1206579384762679299/hbixlO64.jpg")
                     continue
                 else:
                     q = await aki.answer(option_map[option.emoji])
                     # editing embed for next question
-                    game_embed = discord.Embed(title=f"{str(ctx.author.name)}'s game of Akinator", description=q,
+                    game_embed = discord.Embed(title=f"bb's game of Akinator", description=q,
                                                url=r"https://en.akinator.com/", color=discord.Color.blurple())
+                    game_embed.set_thumbnail(url="https://pbs.twimg.com/profile_images/1206579384762679299/hbixlO64.jpg")
+
                     continue
 
         await aki.win()
@@ -225,19 +231,21 @@ class Games(commands.Cog):
                                value=aki.first_guess['description'], inline=False)
         result_embed.set_footer(text="Was I right? Add the reaction accordingly.")
         result_embed.set_image(url=aki.first_guess['absolute_picture_path'])
+        result_embed.set_thumbnail(url="https://img.kbhgames.com/2017/08/Akinator.jpg")
         result_message = await ctx.send(embed=result_embed)
         for emoji in ['✅', '❌']:
             await result_message.add_reaction(emoji)
-            
+
         option, _ = await self.client.wait_for('reaction_add', check=option_check, timeout=15)
         if option.emoji == '✅':
             final_embed = discord.Embed(title="That was **FUN**!!!", color=discord.Color.green())
+            final_embed.set_thumbnail(url="https://www1.minijuegosgratis.com/v3/games/thumbnails/204989_1.jpg")
             return await ctx.send(embed=final_embed)
         elif option.emoji == '❌':
             final_embed = discord.Embed(title="Oof", description="Maybe try again?", color=discord.Color.red())
+            final_embed.set_thumbnail(url="https://ojm.swagewhenchat.site/img/5311b774220c41fc3479bcd5611cb9e3.jpg")
             # this does not restart/continue a game from where it was left off, but you can program that in if you like.
             return await ctx.send(embed=final_embed)
-
 
 
 # ______________________________________________________________________
