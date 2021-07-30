@@ -399,14 +399,6 @@ class dwellers(commands.Cog):
         else:
             await ctx.send(':red_circle: There was a problem with your input or the Giphy developers. It will be fixed.')
             raise error
-    
-    # ____________
-    # spam
-    @commands.command()
-    @has_permissions(manage_messages=True)
-    async def spam(self, ctx, val=5, *, msg):
-        for i in range(val):
-            await ctx.send(msg)
 
     
     
