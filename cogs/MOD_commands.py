@@ -474,7 +474,16 @@ class MOD_commands(commands.Cog):
 
         await ctx.send(embed=em)
 
-
+    
+    # ____________
+    # spam
+    @commands.command()
+    @has_permissions(manage_messages=True)
+    async def spam(self, ctx, val=5, *, msg):
+        for i in range(val):
+            await ctx.send(msg)
+            
+            
 # ________________________________________________________
 
 def setup(client):
