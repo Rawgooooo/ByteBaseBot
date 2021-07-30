@@ -96,8 +96,27 @@ def get_quote():
 
 
 # _______________________________________________________________________
+# vote
+@client.event
+async def on_message(message):
+    if message.channel.id == 870555208353206292:
+        data = message.content.split(" ")
+        user = re.sub("\D", "", data[4])  # reducing ping to just a user id
+        user_object = client.get_user(int(user)) or await client.fetch_user(int(user))
+        user = user_object
 
+        embed = discord.Embed(color=discord.Colour.gold(),
+                              title="<:upvote:869792030342119454> Vote",
+                              description=f"{user_object.mention} Thank you for voting us on [Top.gg](https://top.gg/bot/797168260419813396/vote)"
+                              )
+        embed.set_thumbnail(url=client.user.avatar_url)
+        embed.set_footer(text="Make sure to keep voting for more Rewards!!", icon_url=client.user.avatar_url)
+
+        await user_object.send(embed=embed)
+
+    await client.process_commands(message)
 # _______________________________________________________________________
+
 
 # ____________________________
 # snipe
