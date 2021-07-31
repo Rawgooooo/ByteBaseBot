@@ -4,6 +4,7 @@ import discord
 from discord.ext import commands
 import os
 import praw
+import re
 
 intents = discord.Intents.all()
 intents.members = True
