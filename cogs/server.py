@@ -94,7 +94,7 @@ class server(commands.Cog):
     # invite
     @commands.command(aliases=["i"])
     async def invite(self, ctx):
-        await ctx.send("Invite me to your server so that you can enjoy my presence over there too!!\nhttps://top.gg/bot/797168260419813396")
+        await ctx.send("Invite me to your server so that you can enjoy my presence over there too!!\nhttps://top.gg/bot/797168260419813396/invite/")
 
     # ______________________
     # change prefix
