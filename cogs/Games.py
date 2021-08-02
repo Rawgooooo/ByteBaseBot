@@ -178,7 +178,7 @@ class Games(commands.Cog):
         first = await ctx.send("Processing...")
         q = await aki.start_game()
 
-        game_embed = discord.Embed(title=f"bb's game of Akinator", description=q,
+        game_embed = discord.Embed(title=f"{ctx.author.name}'s game of Akinator", description=q,
                                    url=r"https://en.akinator.com/", color=discord.Color.blurple())
         game_embed.set_footer(text=f"Wait for the bot to add reactions before you give your response.")
         game_embed.set_thumbnail(url="https://i.pinimg.com/originals/3c/e6/55/3ce6554630357a7b3821268bc049859d.png")
@@ -211,14 +211,14 @@ class Games(commands.Cog):
                     except:  # excepting trying-to-go-beyond-first-question error
                         pass
                     # editing embed for next question
-                    game_embed = discord.Embed(title=f"bb's game of Akinator", description=q,
+                    game_embed = discord.Embed(title=f"{ctx.author.name}'s game of Akinator", description=q,
                                                url=r"https://en.akinator.com/", color=discord.Color.blurple())
                     game_embed.set_thumbnail(url="https://pbs.twimg.com/profile_images/1206579384762679299/hbixlO64.jpg")
                     continue
                 else:
                     q = await aki.answer(option_map[option.emoji])
                     # editing embed for next question
-                    game_embed = discord.Embed(title=f"bb's game of Akinator", description=q,
+                    game_embed = discord.Embed(title=f"{ctx.author.name}'s game of Akinator", description=q,
                                                url=r"https://en.akinator.com/", color=discord.Color.blurple())
                     game_embed.set_thumbnail(url="https://pbs.twimg.com/profile_images/1206579384762679299/hbixlO64.jpg")
 
