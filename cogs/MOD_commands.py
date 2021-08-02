@@ -167,11 +167,6 @@ class MOD_commands(commands.Cog):
         if isinstance(error, commands.MissingRequiredArgument):
             await ctx.send("Correct Method:[Title] ',' [Name] ' . ' [Content] '/ ' [Side_note]")
 
-    # _____________________________________
-    # warn
-    @commands.Cog.listener()
-    async def on_guild_join(self, guild):
-        self.client.warnings[guild.id] = {}
 
     @commands.command()
     @has_permissions(administrator=True)
