@@ -144,10 +144,10 @@ class MOD_commands(commands.Cog):
     async def announce(self, ctx, *, msg):
         channel = ctx.channel
         try:
-            title = msg.split(",")[0]
-            dsc = msg.split(",")[1]
+            title = msg.split(" , ")[0]
+            dsc = msg.split(" , ")[1]
             name, content = dsc.split(" . ")
-            footer = msg.split("/ ")[1]
+            footer = msg.split(" / ")[1]
             # txt = f"{title}\n\nReact with:\n✅ for {name} \nor \n❌ for {content}"
         except:
             await channel.send("Correct Method:[Title] ',' [Name] ' . ' [Content] '/ ' [Side_note]")
