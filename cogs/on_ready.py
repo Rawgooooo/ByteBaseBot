@@ -17,6 +17,7 @@ class On_Ready(commands.Cog):
             servers = []
             for server in self.client.guilds:
                 servers.append(server.name)
+                print(server.id)
             print("\nCurrent Servers   :", *servers, sep="\n\t\t\t\t\t")
             num_servers = len(servers)
             print("Number of Servers :", num_servers)
