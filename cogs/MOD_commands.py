@@ -233,8 +233,9 @@ class MOD_commands(commands.Cog):
     async def mute(self, ctx, user: discord.Member):
         role_1 = ctx.guild.get_role(778224719261728809)
         role = ctx.guild.get_role(806192447449333841)
+        role_2 = ctx.guild.get_role(861864615515389992)
         if ctx.author.guild_permissions.mute_members:
-            await user.add_roles(role or role_1)
+            await user.add_roles(role or role_1 or role_2)
 
             em = discord.Embed(colour=discord.Colour.blurple(), timestamp=ctx.message.created_at,
                                title=f"MUTE!! - {user}")
