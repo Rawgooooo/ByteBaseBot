@@ -68,7 +68,8 @@ economy_c = [{"name": "<:dollarnote:869480775408554024> balance", "desc": "Check
              {"name": "₿ cryptocurrency", "desc": "Check crypto currency prices!"},
              {"name": "🔒 status", "desc": "Active Passive stop ROB"}]
 
-games_c = [{"name": "⭕ tictactoe :x:", "desc": "Play the famous XO"}]
+games_c = [{"name": "⭕ tictactoe :x:", "desc": "Play the famous XO"},
+           {"name": "Akinator", "desc": "The all knowing akinator reads your mind!!"}]
 
 vc_c = [{"name": "📞 join", "desc": "Join VC"},
         {"name": "⛔ leave", "desc": "Leave VC"}]
