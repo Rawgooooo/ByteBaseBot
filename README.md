@@ -1,6 +1,6 @@
 # ByteBaseBot
 Overview:
-All-in-one companion for Discord, designed to elevate your server experience to new heights. Packed with a multitude of features, OmniBot seamlessly blends moderation, entertainment, and utility into a single, powerful bot. Whether you’re managing a community, looking to have some fun, or wanting to keep your server lively and engaging, OmniBot has you covered.
+All-in-one companion for Discord, designed to elevate your server experience to new heights. Packed with a multitude of features, BBot seamlessly blends moderation, entertainment, and utility into a single, powerful bot. Whether you’re managing a community, looking to have some fun, or wanting to keep your server lively and engaging, BBbot has you covered.
 
 Features:
 
